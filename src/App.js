@@ -3,7 +3,7 @@ import "./App.css";
 import Cart from "./Components/CartPage/cart";
 import Main from "./Components/MainPage/main";
 import { useSelector, useDispatch } from "react-redux";
-import { cartData, data2Cart } from "./Components/Store/CounterSlice";
+import { data2Cart } from "./Components/Store/CounterSlice";
 function App() {
   const dispatch = useDispatch();
   const [dataSet, setDataSet] = useState([]);

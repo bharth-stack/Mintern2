@@ -1,23 +1,12 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import styles from "./cart.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Cart() {
-  const [dataSet, setDataSet] = useState([]);
   const data = useSelector((state) => {
     return state.counter.Data2;
   });
-  // useEffect(() => {
-  //   data.map((e, i) =>
-  //     fetch(`https://fakestoreapi.com/products/+${e}`)
-  //       .then((res) => res.json())
-  //       .then((json) => {
-  //         dataSet.push(json);
-  //         setDataSet(dataSet);
-  //       })
-  //   );
-  // }, [1]);
-  // console.log(dataSet);
+
   return (
     <Fragment>
       <div className={styles.section}>
