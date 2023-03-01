@@ -8,7 +8,7 @@ export default function Main() {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setData(json));
-  }, [1]);
+  }, []);
   console.log(data);
   const dispatch = useDispatch();
   const overlayOpen = useSelector((state) => {
