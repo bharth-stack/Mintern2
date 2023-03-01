@@ -1,0 +1,11 @@
+.section {
+  width: 40%;
+}
+.section_2 {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.Image {
+  width: 20%;
+}

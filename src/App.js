@@ -1,56 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-
+import React, { useState } from "react";
+import "./App.css";
+import Cart from "./Components/CartPage/cart";
+import Main from "./Components/MainPage/main";
+import { useSelector, useDispatch } from "react-redux";
+import { cartData, data2Cart } from "./Components/Store/CounterSlice";
 function App() {
+  const dispatch = useDispatch();
+  const [dataSet, setDataSet] = useState([]);
+  const data = useSelector((state) => {
+    return state.counter.Data;
+  });
+
+  const [value, setValue] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div>
+      <button
+        onClick={() => {
+          setValue(!value);
+          // useEffect(() => {
+          data.map((e, i) =>
+            fetch(`https://fakestoreapi.com/products/+${e}`)
+              .then((res) => res.json())
+              .then((json) => {
+                dataSet.push(json);
+                setDataSet(dataSet);
+              })
+          );
+          console.log(1);
+          dispatch(data2Cart(dataSet));
+          // }, [1]);
+        }}
+      >
+        Cart
+      </button>
+      {value && <Main></Main>}
+
+      {!value && <Cart></Cart>}
     </div>
   );
 }
